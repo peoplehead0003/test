@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Website</title>
+    <style>
+        /* 加入 CSS 樣式 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+<button id="myButton">Click Me</button>
+
+<div id="myPopup" class="popup">
+    <h2>Popup Content</h2>
+    <p>This is an interactive popup. Click outside to close.</p>
+</div>
+
+<script>
+    // JavaScript 代碼，用於顯示/隱藏彈出視窗
+    const button = document.getElementById('myButton');
+    const popup = document.getElementById('myPopup');
+
+    button.addEventListener('click', () => {
+        popup.style.display = 'block';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === popup) {
+            popup.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>
