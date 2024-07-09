@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>好食在-好吃雞肉線上點餐</title>
+</head>
+<body>
+    <p class="cart">
+        
+    </p>
+    <button onclick="
+        showcart();
+        ">購物車總額</button>
+
+    <button onclick="
+        cart.totalprice = 0;
+        cart.proudctnum = 0;
+        cart.product1.num = 0;
+        cart.product2.num = 0;
+        cart.product3.num = 0;
+        cart.product4.num = 0;
+        console.log('已清空購物車');
+        showcart();
+        localStorage.removeItem('cart')
+        ">清空購物車</button>
+    <p>雞翅飯</p>
+    <p>$65</p>
+    
+    <button onclick="
+        cart.totalprice += 65;;
+        cart.proudctnum += 1;
+        cart.product1.num += 1;
+        showcart();
+        save();
+        ">加入購物車</button>
+    <img src="C:\Users\penny\Program Project\jeb sheep.png" alt="">
+    <p>煙燻雞肉飯</p>
+    <p>$65</p>
+    
+    <button onclick="
+        cart.totalprice += 65;
+        cart.proudctnum += 1;
+        cart.product2.num += 1;
+        showcart();
+        save();
+        ">加入購物車</button>
+    <img src="C:\Users\penny\Program Project\jeb sheep.png" alt="">
+    <p>白斬雞肉飯</p>
+    <p>$65</p>
+    
+    <button onclick="
+        cart.totalprice += 65;
+        cart.proudctnum += 1;
+        cart.product3.num += 1;
+        showcart();
+        save();
+        ">加入購物車</button>
+    <img src="C:\Users\penny\Program Project\jeb sheep.png" alt="">
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart'));
+        if (cart === null){
+            cart = {
+                totalprice:0,
+                proudctnum:0,
+                product1:{id:1,name:'雞翅飯:',price:65,num:0},
+                product2:{id:2,name:'煙燻雞肉飯:',price:65,num:0},
+                product3:{id:3,name:'白斬雞肉飯:',price:65,num:0},
+                product4:{id:4,name:'煙燻+白斬雞肉飯:',price:65,num:0},
+            };
+        }
+        function showcart(){
+            console.log('目前商品數:' + cart.proudctnum + '個');
+            console.log(cart.product1.name + cart.product1.num + '個');
+            console.log(cart.product2.name + cart.product2.num + '個');
+            console.log(cart.product3.name + cart.product3.num + '個');
+            console.log('目前購物車總額:' + cart.totalprice + '元');
+        };
+        function save(){
+            let savecart = JSON.stringify(cart);
+            localStorage.setItem('cart',savecart)
+        };
+    </script>
+</body>
+</html>
